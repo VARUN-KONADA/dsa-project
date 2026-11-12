@@ -120,7 +120,14 @@ void view_waiting_patients()
     printf("Waiting patients:\n");
     for(int i = 0; i < patient_count; i++)
     {
-        printf("Name: %s, Priority: %d, Age: %d, Disease: %s\n", patients[index].name, patients[index].priority, patients[index].age, patients[index].disease);
+        printf("Name: %s", patients[index].name);
+        if(patients[index].priority == 1)
+            printf(", Priority: Critical");
+        else if(patients[index].priority == 2)
+            printf(", Priority: Serious");
+        else
+            printf(", Priority: Stable");
+        printf(", Age: %d, Disease: %s\n", patients[index].age, patients[index].disease);
         index = (index + 1) % MAX_PATIENTS;
     }
 }
@@ -133,7 +140,13 @@ void treat_next_patient()
         return;
     }
     printf("Treating patient: %s\n", patients[front].name);
-    printf("Priority: %d, Age: %d, Disease: %s\n", patients[front].priority, patients[front].age, patients[front].disease);
+    if(patients[front].priority == 1)
+        printf(", Priority: Critical");
+    else if(patients[front].priority == 2)
+        printf(", Priority: Serious");
+    else
+        printf(", Priority: Stable");
+    printf(", Age: %d, Disease: %s\n", patients[front].priority, patients[front].age, patients[front].disease);
     front = (front + 1) % MAX_PATIENTS;
     patient_count--;
 }
