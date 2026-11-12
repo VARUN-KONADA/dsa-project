@@ -139,14 +139,14 @@ void treat_next_patient()
         printf("No patients are waiting to be treated.\n");
         return;
     }
-    printf("Treating patient: %s\n", patients[front].name);
+    printf("Treating patient: %s", patients[front].name);
     if(patients[front].priority == 1)
         printf(", Priority: Critical");
     else if(patients[front].priority == 2)
         printf(", Priority: Serious");
     else
         printf(", Priority: Stable");
-    printf(", Age: %d, Disease: %s\n", patients[front].priority, patients[front].age, patients[front].disease);
+    printf(", Age: %d, Disease: %s\n", patients[front].age, patients[front].disease);
     front = (front + 1) % MAX_PATIENTS;
     patient_count--;
 }
